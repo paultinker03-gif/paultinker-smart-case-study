@@ -118,7 +118,33 @@
   };
   document.querySelectorAll('img.zoom').forEach((img) => {
     img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-haspopup', 'dialog');
     img.addEventListener('click', () => open(img));
     img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); } });
+  });
+
+  // Links that open an overlay on this page (the InVision article).
+  document.querySelectorAll('[data-dialog]').forEach((a) => {
+    const dlg = document.getElementById(a.dataset.dialog);
+    if (!dlg) return;
+    a.removeAttribute('target');
+    a.addEventListener('click', (e) => { e.preventDefault(); dlg.showModal(); dlg.querySelector('.article-close').focus(); });
+    dlg.querySelector('.article-close').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => a.focus());
+  });
+
+  // Looping videos: play when on screen, a button to pause (WCAG 2.2.2), no autoplay for reduced motion.
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.loop-video').forEach((fig) => {
+    const v = fig.querySelector('video'), btn = fig.querySelector('.video-toggle');
+    let paused = still;
+    const label = () => { btn.textContent = v.paused ? 'Play' : 'Pause'; btn.setAttribute('aria-label', v.paused ? 'Play animation' : 'Pause animation'); };
+    btn.addEventListener('click', () => { paused = !v.paused; paused ? v.pause() : v.play(); });
+    v.addEventListener('play', label); v.addEventListener('pause', label);
+    const watch = 'IntersectionObserver' in window && new IntersectionObserver(([e]) => { if (e.isIntersecting && !paused) v.play().catch(() => {}); else if (!e.isIntersecting) v.pause(); }, { threshold: .35 });
+    if (watch) watch.observe(v);
+    label();
   });
 })();

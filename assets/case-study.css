@@ -335,3 +335,6 @@ p, li, figcaption { text-wrap: pretty; }
 /* Captions under full-bleed images sit on the 12-column grid, with the page's side spacing on phones. */
 .bleed figcaption { max-width: var(--wide); margin: 12px auto 0; padding: 0 var(--gutter); }
 .carousel-brands .carousel-track .slide:not(.slide-dark), .carousel-ba .carousel-track { background: #d9e6f2; }
+/* One size for all running text in the intro: bullets and the Role/When/Products line match the body. */
+.meta, .role ul { font-size: var(--fs-body); }
+.role li::before { top: 16px; }
