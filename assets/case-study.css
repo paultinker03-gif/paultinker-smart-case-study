@@ -339,3 +339,20 @@ p, li, figcaption { text-wrap: pretty; }
 .meta, .role ul { font-size: var(--fs-body); }
 .role li::before { top: 16px; }
 h1[tabindex="-1"]:focus { outline: none; }
+/* One gap before every section heading, whatever the section above ends with (text, a button, a carousel or a video). */
+:root { --section-gap: clamp(88px, 10vw, 136px); }
+.chapter, .chapter.text-only, .chapter.text-only + .chapter:not(.text-only) { padding-top: var(--section-gap); }
+.chapter > :last-child { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.chapter > .text:last-child > :last-child, .chapter > .text-follow:last-child > :last-child { margin-bottom: 0 !important; }
+.learned { margin-top: var(--section-gap); }
+.stats + .chapter { padding-top: 72px; }
+/* Top bar link underlined, like the footer links. */
+.top .back { text-decoration: underline; text-underline-offset: 3px; }
+/* One gap between every block inside a section (text, button, image, carousel, video, diagram).
+   A small label that introduces the block after it stays close to it. */
+:root { --block-gap: clamp(40px, 5vw, 64px); }
+.chapter > .text, .chapter > .text-follow { padding-top: 0 !important; padding-bottom: 0 !important; }
+.chapter > * { margin-top: 0 !important; margin-bottom: 0 !important; }
+.chapter > * + * { margin-top: var(--block-gap) !important; }
+.chapter > .board-head + * { margin-top: 24px !important; }
+.chapter > .text > :last-child, .chapter > .text-follow > :last-child { margin-bottom: 0 !important; }
