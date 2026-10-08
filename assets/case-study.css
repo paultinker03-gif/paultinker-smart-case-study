@@ -338,3 +338,4 @@ p, li, figcaption { text-wrap: pretty; }
 /* One size for all running text in the intro: bullets and the Role/When/Products line match the body. */
 .meta, .role ul { font-size: var(--fs-body); }
 .role li::before { top: 16px; }
+h1[tabindex="-1"]:focus { outline: none; }

@@ -44,7 +44,10 @@
   document.querySelectorAll('.to-top').forEach((a) => a.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-    const skip = document.querySelector('.skip'); if (skip) skip.focus({ preventScroll: true });
+    // Move focus to the page heading (not the skip link, which would pop into view),
+    // so keyboard users carry on from the top.
+    const h1 = document.querySelector('h1');
+    if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); }
   }));
 
   // App tabs: arrow keys move between tabs; the carousel in the shown panel starts at its first slide.
