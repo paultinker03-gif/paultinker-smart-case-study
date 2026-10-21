@@ -356,3 +356,13 @@ h1[tabindex="-1"]:focus { outline: none; }
 .chapter > * + * { margin-top: var(--block-gap) !important; }
 .chapter > .board-head + * { margin-top: 24px !important; }
 .chapter > .text > :last-child, .chapter > .text-follow > :last-child { margin-bottom: 0 !important; }
+
+/* Narrow screens: the full title stays on one line, and the back link shortens to "Portfolio". */
+@media (max-width: 480px) {
+  .top .brand small { font-size: 12px; white-space: nowrap; }
+  .top .back { font-size: 0; white-space: nowrap; }
+  .top .back::after { content: 'Portfolio' / ''; font-size: 15px; }
+}
+
+/* A board that ends a chapter keeps its own bottom padding. */
+.chapter > .board:last-child { padding-bottom: clamp(28px, 4vw, 52px) !important; }
