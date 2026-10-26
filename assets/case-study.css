@@ -371,3 +371,28 @@ h1[tabindex="-1"]:focus { outline: none; }
 .intro-head { padding-bottom: clamp(32px, 4vw, 48px); }
 .intro-more { padding-top: clamp(36px, 5vw, 56px); padding-bottom: 0; }
 .intro-more > .intro-p:first-child { margin-top: 0; }
+
+/* What I'd do now: the three points as cards with an icon, then the links. */
+.now-wrap { max-width: var(--wide); margin-left: auto; margin-right: auto; padding: 0 var(--gutter); }
+.now-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.now-cards li { background: var(--tint); border-radius: 16px; padding: 28px 28px 30px; }
+.now-icon { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 14px; background: var(--accent); color: #fff; margin-bottom: 22px; }
+.now-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.now-cards p { margin: 0; font-size: var(--fs-body); }
+.now-cards strong { display: block; margin-bottom: 10px; color: var(--navy); font-size: 1.15em; line-height: 1.3; }
+.now + .bleed { margin-top: var(--section-gap); }
+@media (max-width: 900px) { .now-cards { grid-template-columns: 1fr; } }
+
+/* Closing section, simplified: text on one side, one image on the other */
+.now-split { max-width: var(--wide); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.now-split .now-text { max-width: none; margin: 0; padding: 0; }
+.now-list { margin: 0; padding-left: 1.2em; }
+.now-list li { margin: 0 0 14px; padding-left: 4px; }
+.now-list li::marker { color: var(--accent); }
+.now-list strong { color: var(--navy); }
+.now-media { margin: 0; }
+.now-media img { display: block; width: 100%; height: auto; border-radius: 14px; }
+@media (max-width: 900px) {
+  .now-split { grid-template-columns: 1fr; }
+  .now-media { max-width: 400px; margin: 0 auto; }
+}
