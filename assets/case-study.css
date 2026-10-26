@@ -396,3 +396,6 @@ h1[tabindex="-1"]:focus { outline: none; }
   .now-split { grid-template-columns: 1fr; }
   .now-media { max-width: 400px; margin: 0 auto; }
 }
+
+/* A follow-on paragraph straight after the intro reads as the same text block */
+.chapter > .text + .text-follow { margin-top: 18px !important; }
