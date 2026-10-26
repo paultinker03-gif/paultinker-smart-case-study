@@ -366,3 +366,8 @@ h1[tabindex="-1"]:focus { outline: none; }
 
 /* A board that ends a chapter keeps its own bottom padding. */
 .chapter > .board:last-child { padding-bottom: clamp(28px, 4vw, 52px) !important; }
+
+/* Intro split: title and lede first, then the hero, then the context, the crafts and the details. */
+.intro-head { padding-bottom: clamp(32px, 4vw, 48px); }
+.intro-more { padding-top: clamp(36px, 5vw, 56px); padding-bottom: 0; }
+.intro-more > .intro-p:first-child { margin-top: 0; }
