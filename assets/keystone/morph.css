@@ -99,7 +99,7 @@
 .ks-bar > span, .ks-track > span { transition: background-color var(--km-ms) var(--km-ease); }
 
 /* the pause button, in the panel's corner */
-.km-pause { position: absolute; left: 16px; bottom: 16px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #c9ced4; background: #fff; display: grid; place-items: center; cursor: pointer; color: #0b2a4a; flex: none; }
+.km-pause { position: absolute; right: 16px; bottom: 16px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #c9ced4; background: #fff; display: grid; place-items: center; cursor: pointer; color: #0b2a4a; flex: none; }
 .km-pause svg { width: 14px; height: 14px; }
 .km-pause:focus-visible { outline: 2px solid #0b2a4a; outline-offset: 3px; }
 

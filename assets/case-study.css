@@ -498,3 +498,8 @@ h1[tabindex="-1"]:focus { outline: none; }
   .carousel-pair .carousel-track .slide:has(.slide-media.clip) { background: none !important; padding: 0 0 8px; gap: 18px; }
   .carousel-pair .slide-media.clip { width: 100%; border-radius: 12px; overflow: hidden; background: var(--slide-bg, #d9e6f2); }
 }
+/* Some Macs draw video colour a shade off the page's own blue (Paul saw it on his work MacBook, 2026-10-29), so on desktop the
+   clip's left and right edges fade softly into the slide; the fade ends before the phone, so the phone itself is untouched */
+@media (min-width: 701px) {
+  .slide-media.clip video { -webkit-mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+}
