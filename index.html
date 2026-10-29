@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Smart Pension case study · Paul Tinker, product and design systems designer</title>
+<title>Smart Pension case study · Paul Tinker, Principal Product Designer · Design Systems</title>
 <meta name="description" content="Paul Tinker, product designer and design systems designer: the Smart Pension member, adviser and employer products, and Keystone, the multi-brand design system behind them.">
 <meta property="og:title" content="Smart Pension: product design and a design system for four brands">
 <meta property="og:description" content="Three products, four brands, English and Arabic, and roughly 50% faster delivery.">
@@ -18,64 +18,71 @@
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-KJQHXD9PGP');</script>
 <link rel="icon" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/mulish-500-800.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/case-study.css">
+<link rel="stylesheet" href="assets/case-study.css?v=21">
+<link rel="stylesheet" href="assets/ksp-play.css?v=10">
+<!-- paultinker 2026: content slides in on arrival (classes set before the first paint) -->
+<script>(function(h){if(matchMedia('(max-width: 700px), (max-height: 500px) and (orientation: landscape)').matches)return;h.classList.add('pt-intro');if(/[?&]via=home/.test(location.search))h.classList.add('pt-from-home');setTimeout(function(){h.classList.add('pt-go')},2500);})(document.documentElement);</script>
+<!-- pt-priority: the title's fonts and the 3D hero load first (desktop only for the 3D) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="script" crossorigin href="https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js" media="(min-width: 701px) and (min-height: 501px), (min-width: 701px) and (orientation: portrait)">
+<link rel="preload" as="script" crossorigin href="https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.core.js" media="(min-width: 701px) and (min-height: 501px), (min-width: 701px) and (orientation: portrait)">
+<link rel="preload" as="script" crossorigin href="https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/environments/RoomEnvironment.js" media="(min-width: 701px) and (min-height: 501px), (min-width: 701px) and (orientation: portrait)">
+<link rel="stylesheet" href="assets/keystone/morph.css?v=10">
+<link rel="stylesheet" href="assets/keystone/tokens.css?v=9">
+<link rel="stylesheet" href="/_shared/transition.css">
+<link rel="preload" as="font" type="font/woff2" href="/_shared/fonts/inter-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/_shared/fonts/lato-700.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/_shared/fonts/dm-serif-text.woff2" crossorigin>
+<link rel="stylesheet" href="/_shared/fonts.css">
 </head>
 <body>
 
 <a class="skip" href="#main">Skip to the case study</a>
 <header class="top">
   <div class="top-in">
-    <a class="brand" href="https://paultinker.uk"><span>Paul Tinker</span><small>Design Systems Product Lead</small></a>
-    <a class="back" href="https://paultinker.uk/#smart">Back to portfolio</a>
+    <a class="brand" href="https://paultinker.uk"><span>Paul Tinker</span><small>Principal Product Designer · Design Systems</small></a>
+    <a class="back back-x" href="https://paultinker.uk/#smart" aria-label="Back to portfolio" title="Back to portfolio"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
   </div>
   <div class="progress" aria-hidden="true"></div>
 </header>
 
 <main id="main">
+  <figure class="bleed" data-pt-scene style="--pt-scene-h:125%">
+    <picture><source media="(min-width: 701px) and (min-height: 501px), (min-width: 701px) and (orientation: portrait)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><img src="images/hero-phone.webp" srcset="images/hero-phone-600.webp 600w, images/hero-phone.webp 1200w" sizes="100vw" width="1200" height="1500" alt="Two phones showing the Smart Pension member app: the home screen with a £42,180 pension pot and the pension balance screen, with pound coins around them." fetchpriority="high"></picture>
+    <figcaption class="rebuild-note">Member, Adviser and Employer across Smart, Zurich and New Ireland, in English and Arabic.</figcaption>
+  </figure>
+
   <section class="intro intro-head">
     <p class="eyebrow">Case study · Smart Pension</p>
     <h1>Designing pensions people can understand</h1>
     <p class="lede">I led product design across Smart's member, adviser and employer products, and designed Keystone, the design system behind them: three audiences, four brands and two reading directions.</p>
-  </section>
-
-  <figure class="bleed">
-    <img src="images/hero.jpg" srcset="images/hero-1000.jpg 1000w, images/hero.jpg 2400w" sizes="100vw" width="2400" height="900" alt="The Smart member, adviser and employer apps on desktop and phone, alongside the same dashboard in Zurich Arabic, New Ireland and Keystone themes." fetchpriority="high">
-    <figcaption class="rebuild-note">Member, Adviser and Employer across Smart, Zurich and New Ireland, in English and Arabic.</figcaption>
-  </figure>
-
-  <section class="intro intro-more">
-    <p class="intro-p">Smart grew from around 150 to 800 people while I was there, and the platform grew to 1.5 million users and over £15 billion under management by 2025, up from £0.21 billion in 2018. Members, advisers and employers had inconsistent experiences across Smart's brand, its white-label partners and several languages, accessibility needed work, and teams were solving the same problems independently.</p>
-    <div class="roles" id="intro-roles">
-      <div class="role role-ds">
-        <p class="role-label">Design systems</p>
-        <ul>
-          <li>Tokens, components, patterns and documentation</li>
-          <li>Built once, reused across all three products</li>
-          <li>Theming for four brands, light and dark, English and Arabic</li>
-        </ul>
-      </div>
-      <div class="role role-pd">
-        <p class="role-label">Product design</p>
-        <ul>
-          <li>Clearer navigation and self-service across every product</li>
-          <li>End-to-end journeys, flows and prototypes for members, advisers and employers</li>
-          <li>Every product rebuilt on the system</li>
-        </ul>
-      </div>
-    </div>
-    <dl class="meta">
+    <dl class="meta meta-facts">
       <div><dt>Role</dt><dd>Design Lead, Product Design and Design System</dd></div>
       <div><dt>When</dt><dd>Aug 2020 to Feb 2024</dd></div>
       <div><dt>Products</dt><dd>Member, Adviser and Employer</dd></div>
-      <div><dt>Team</dt><dd>I led the design system and product design, working with two product designers on the roll-out, a content designer, the front-end team, and product owners and subject-matter experts for each area</dd></div>
     </dl>
+  </section>
+
+  <section class="intro intro-more">
+    <p class="intro-p">Smart grew from around 150 to 800 people while I was there, and the platform grew to 1.5 million users and over £15 billion under management by 2025, up from £0.21 billion in 2018. Members, advisers and employers had inconsistent experiences across Smart's brand, its white-label partners and several languages, accessibility needed work, and teams were solving the same problems independently.</p>
+    <div class="roles roles-one" id="intro-roles">
+      <div class="role">
+        <p class="role-label">Overview</p>
+        <ul>
+          <li>Keystone, Smart's design system: tokens, components, patterns and documentation</li>
+          <li>Theming for four brands, light and dark, English and Arabic</li>
+          <li>End-to-end journeys, flows and prototypes for members, advisers and employers</li>
+          <li>Kept design and front end aligned as every product moved onto Keystone</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section class="stats" aria-label="At a glance">
     <div class="stat"><b>3</b><span>Products: Member, Adviser and Employer</span></div>
     <div class="stat"><b>4</b><span>Brands from one library</span></div>
     <div class="stat"><b>65</b><span>Documented components in the library</span></div>
-    <div class="stat hl"><b>~50%</b><span>Faster delivery than forecast on the US project</span></div>
+    <div class="stat hl"><b><small class="approx">~</small>50<small>%</small></b><span>Faster delivery than forecast on the US project</span></div>
   </section>
 
   <!-- The project film is off the page for now; it is kept in film/smart-film.mp4. -->
@@ -86,8 +93,9 @@
       <p>The clearest signal came from support. Members, advisers and employers regularly called to ask Smart to make changes for them, because they couldn't work out how to do it themselves. The features existed, but people either couldn't find them or, when they did, couldn't work out how to use them.</p>
       <p>The existing platform wasn't built for Smart's growth: teams worked independently, Design and Engineering lacked a common language, and improvements made in one product rarely reached the others. The member, adviser and employer experiences were each designed and built differently, with nothing shared between them. Every new feature or change had to be designed and built separately for each one, so it was slow to ship. The symptoms looked like UI problems; the underlying challenge was building a shared platform that could scale with the organisation.</p>
     </div>
-    <div class="board-head rv"><p class="board-eyebrow">Before and after</p><h3 class="board-title">Three products, three different designs</h3><p class="board-sub">Where each product started, and how it looks rebuilt on the system: clearer information architecture, so people could find and do things themselves, and the improvements product owners had been asking for.</p></div>
-    <figure class="carousel carousel-ba rv" aria-roledescription="carousel" aria-label="Before and after, Member, Adviser and Employer">
+    <!-- Before and after: hidden for now (Paul, 2026-10-27); remove "hidden" and the style to bring it back -->
+    <div class="board-head rv" hidden style="display:none"><p class="board-eyebrow">Before and after</p><h3 class="board-title">Three products, three different designs</h3><p class="board-sub">Where each product started, and how it looks rebuilt on the system: clearer information architecture, so people could find and do things themselves, and the improvements product owners had been asking for.</p></div>
+    <figure class="carousel carousel-ba rv" hidden style="display:none" aria-roledescription="carousel" aria-label="Before and after, Member, Adviser and Employer">
       
       <div class="carousel-track" tabindex="0">
         <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 3">
@@ -165,31 +173,31 @@
     <div class="app-tabs rv">
       <div class="tablist" role="tablist" aria-label="The three apps"><button type="button" role="tab" id="tab-0" aria-controls="panel-0" aria-selected="true" tabindex="0">Member</button><button type="button" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="false" tabindex="-1">Adviser</button><button type="button" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">Employer</button></div>
       <div class="tabpanel" role="tabpanel" id="panel-0" aria-labelledby="tab-0">
-    <figure class="carousel carousel-screens" aria-roledescription="carousel" aria-label="Member app, one screen per section">
+    <figure class="carousel carousel-screens carousel-fade" aria-roledescription="carousel" aria-label="Member app, one screen per section">
       
       <div class="carousel-track" tabindex="0">
         <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 6" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><img class="zoom" src="images/screens/smart-dashboard.jpg" width="647" height="1400" alt="Member dashboard: total pot value of £42,180, shortcuts, and projected income of £17,200 a year at 67." loading="lazy" decoding="async"></div>
+          <div class="slide-media"><img src="images/screens/smart-dashboard.jpg" width="647" height="1400" alt="Member dashboard: total pot value of £42,180, shortcuts, and projected income of £17,200 a year at 67." loading="lazy" decoding="async"></div>
           <div class="slide-caption"><strong>Dashboard</strong><span>Most members never chose their pension. The dashboard answers the two questions they do have: how much is there, and is it enough?</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6" style="--slide-bg:#d9e6f2">
-          <div class="slide-media"><img class="zoom" src="images/screens/smart-balance.jpg" width="647" height="1400" alt="Pension balance: total value, you paid in, your employer and investment growth." loading="lazy" decoding="async"></div>
+          <div class="slide-media"><img src="images/screens/smart-balance.jpg" width="647" height="1400" alt="Pension balance: total value, you paid in, your employer and investment growth." loading="lazy" decoding="async"></div>
           <div class="slide-caption"><strong>Pension balance</strong><span>What you paid in, what your employer added and how it has grown, kept apart so the employer's money is visible.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><img class="zoom" src="images/screens/smart-contributions.jpg" width="647" height="1400" alt="Contributions, step 1 of 2: what you and your employer pay in, with the scheme minimum shown above each field." loading="lazy" decoding="async"></div>
+          <div class="slide-media"><img src="images/screens/smart-contributions.jpg" width="647" height="1400" alt="Contributions, step 1 of 2: what you and your employer pay in, with the scheme minimum shown above each field." loading="lazy" decoding="async"></div>
           <div class="slide-caption"><strong>Contributions</strong><span>Paying in more is the biggest lever a member has, so the scheme's rules are shown before they type, not after an error.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6" style="--slide-bg:#d9e6f2">
-          <div class="slide-media"><img class="zoom" src="images/screens/smart-investments.jpg" width="647" height="1400" alt="Investments: the strategy the money is in, a button to change how you invest, and the fund documents." loading="lazy" decoding="async"></div>
+          <div class="slide-media"><img src="images/screens/smart-investments.jpg" width="647" height="1400" alt="Investments: the strategy the money is in, a button to change how you invest, and the fund documents." loading="lazy" decoding="async"></div>
           <div class="slide-caption"><strong>Investments</strong><span>Changing funds is split into short steps, and each choice is described by what happens to your money, not by fund jargon.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><img class="zoom" src="images/screens/smart-retirementOptions.jpg" width="647" height="1400" alt="Retirement options: cash, flexible income, guaranteed income and more, each with what it means." loading="lazy" decoding="async"></div>
+          <div class="slide-media"><img src="images/screens/smart-retirementOptions.jpg" width="647" height="1400" alt="Retirement options: cash, flexible income, guaranteed income and more, each with what it means." loading="lazy" decoding="async"></div>
           <div class="slide-caption"><strong>Retirement options</strong><span>Five ways to take the money, each with what you gain and what you give up, written for someone deciding for the first time.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6" style="--slide-bg:#d9e6f2">
-          <div class="slide-media"><img class="zoom" src="images/screens/smart-beneficiaries.jpg" width="647" height="1400" alt="Beneficiaries: how the wishes are used, and a button to add a beneficiary." loading="lazy" decoding="async"></div>
+          <div class="slide-media"><img src="images/screens/smart-beneficiaries.jpg" width="647" height="1400" alt="Beneficiaries: how the wishes are used, and a button to add a beneficiary." loading="lazy" decoding="async"></div>
           <div class="slide-caption"><strong>Beneficiaries</strong><span>Who should get the pension if the member dies. Each person added grows the form, and it won't save until the shares add up to 100%.</span></div>
         </div>
       </div>
@@ -199,23 +207,23 @@
         <button class="carousel-next" type="button" aria-label="Next image">&rarr;</button>
       </div>
     </figure></div><div class="tabpanel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" hidden>
-    <figure class="carousel carousel-laptop" aria-roledescription="carousel" aria-label="Adviser app, one screen per section">
+    <figure class="carousel carousel-laptop carousel-fade" aria-roledescription="carousel" aria-label="Adviser app, one screen per section">
       
       <div class="carousel-track" tabindex="0">
         <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 4" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/adviser-home.jpg" width="1800" height="1125" alt="Adviser home: 4 clients need your attention, with totals for clients, organisations and users." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/adviser-home.jpg" width="1800" height="1125" alt="Adviser home: 4 clients need your attention, with totals for clients, organisations and users." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Home</strong><span>Advisers manage many company schemes at once. Home leads with the clients that need action, not with totals.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4" style="--slide-bg:#d9e6f2">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/adviser-clients-view-table.jpg" width="1800" height="1125" alt="Clients list with status badges and bulk actions." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/adviser-clients-view-table.jpg" width="1800" height="1125" alt="Clients list with status badges and bulk actions." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Clients</strong><span>A client book built for scale: filter, sort and bulk actions, with status always written as a word.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 4" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/adviser-users.jpg" width="1800" height="1125" alt="Users list with roles." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/adviser-users.jpg" width="1800" height="1125" alt="Users list with roles." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Users</strong><span>Who in the firm can access the adviser account, with adding someone a single step.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 4" style="--slide-bg:#d9e6f2">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/adviser-addClients.jpg" width="1800" height="1125" alt="Add multiple clients: download the template and upload a file." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/adviser-addClients.jpg" width="1800" height="1125" alt="Add multiple clients: download the template and upload a file." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Add clients</strong><span>Bringing a whole book across in one upload, using the same file pattern employers use for staff.</span></div>
         </div>
       </div>
@@ -225,27 +233,27 @@
         <button class="carousel-next" type="button" aria-label="Next image">&rarr;</button>
       </div>
     </figure></div><div class="tabpanel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
-    <figure class="carousel carousel-laptop" aria-roledescription="carousel" aria-label="Employer app, one screen per section">
+    <figure class="carousel carousel-laptop carousel-fade" aria-roledescription="carousel" aria-label="Employer app, one screen per section">
       
       <div class="carousel-track" tabindex="0">
         <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 5" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/employer-home.jpg" width="1800" height="1125" alt="Employer home: payment due this period of £1,180.50, tasks, employees and letters." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/employer-home.jpg" width="1800" height="1125" alt="Employer home: payment due this period of £1,180.50, tasks, employees and letters." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Home</strong><span>For a payroll manager, the question is what is owed and when. Home answers that first, then shows what still needs doing.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 5" style="--slide-bg:#d9e6f2">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/employer-employees.jpg" width="1800" height="1125" alt="Employee list with enrolment status badges, search and bulk actions." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/employer-employees.jpg" width="1800" height="1125" alt="Employee list with enrolment status badges, search and bulk actions." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Employee list</strong><span>Hundreds of employees, each with their enrolment status written as a word, with search, bulk selection and the actions payroll needs most.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 5" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/employer-assess.jpg" width="1800" height="1125" alt="Assess employees, step 1 of 2: assess an individual employee, or upload a PAPDIS file." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/employer-assess.jpg" width="1800" height="1125" alt="Assess employees, step 1 of 2: assess an individual employee, or upload a PAPDIS file." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Assess employees</strong><span>The monthly payroll job as a short journey: choose how to assess, then enter pay. Teams with payroll software can upload their file instead.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 5" style="--slide-bg:#d9e6f2">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/employer-contrib.jpg" width="1800" height="1125" alt="Assessments and contributions with amounts due now and later." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/employer-contrib.jpg" width="1800" height="1125" alt="Assessments and contributions with amounts due now and later." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Assessments and contributions</strong><span>What is due now and what is due later, kept apart, with the ways to assess employees right below.</span></div>
         </div>
         <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 5" style="--slide-bg:#f1ebe1">
-          <div class="slide-media"><div class="laptop"><img class="zoom" src="images/laptop/employer-addEmployees.jpg" width="1800" height="1125" alt="Add employees: add one person, or download the template and upload a file." loading="lazy" decoding="async"></div></div>
+          <div class="slide-media"><div class="laptop"><img src="images/laptop/employer-addEmployees.jpg" width="1800" height="1125" alt="Add employees: add one person, or download the template and upload a file." loading="lazy" decoding="async"></div></div>
           <div class="slide-caption"><strong>Add employees</strong><span>One person by form, or a whole workforce by file, with the template to download first so uploads don't fail.</span></div>
         </div>
       </div>
@@ -256,14 +264,15 @@
       </div>
     </figure></div>
     </div>
-    <section class="board board-roles rv" aria-label="Three roles, one system">
+    <!-- Three roles, one system: hidden for now (Paul, 2026-10-27) -->
+    <section class="board board-roles rv" hidden style="display:none" aria-label="Three roles, one system">
       <p class="board-eyebrow">Three apps</p>
       <h3 class="board-title">Three roles, one system</h3>
       <p class="board-sub">The member, adviser and employer dashboards, all in Zurich, built from the same components and tokens.</p>
       <div class="roles-grid">
-        <figure><h4>Member dashboard</h4><div class="browser"><img class="zoom" src="images/desktop/zurich-member.jpg" width="1800" height="1125" alt="Member dashboard in the Zurich brand." loading="lazy" decoding="async"></div><figcaption>The member's pot value, recent activity and projected income at 67.</figcaption></figure>
-        <figure><h4>Adviser dashboard</h4><div class="browser"><img class="zoom" src="images/desktop/zurich-adviser.jpg" width="1800" height="1125" alt="Adviser dashboard in the Zurich brand." loading="lazy" decoding="async"></div><figcaption>A super adviser's client book, at a glance.</figcaption></figure>
-        <figure><h4>Employer dashboard</h4><div class="browser"><img class="zoom" src="images/desktop/zurich-employer.jpg" width="1800" height="1125" alt="Employer dashboard in the Zurich brand." loading="lazy" decoding="async"></div><figcaption>An employer's payroll and workforce summary.</figcaption></figure>
+        <figure><h4>Member dashboard</h4><div class="browser"><img src="images/desktop/zurich-member.jpg" width="1800" height="1125" alt="Member dashboard in the Zurich brand." loading="lazy" decoding="async"></div><figcaption>The member's pot value, recent activity and projected income at 67.</figcaption></figure>
+        <figure><h4>Adviser dashboard</h4><div class="browser"><img src="images/desktop/zurich-adviser.jpg" width="1800" height="1125" alt="Adviser dashboard in the Zurich brand." loading="lazy" decoding="async"></div><figcaption>A super adviser's client book, at a glance.</figcaption></figure>
+        <figure><h4>Employer dashboard</h4><div class="browser"><img src="images/desktop/zurich-employer.jpg" width="1800" height="1125" alt="Employer dashboard in the Zurich brand." loading="lazy" decoding="async"></div><figcaption>An employer's payroll and workforce summary.</figcaption></figure>
       </div>
     </section>
   </section>
@@ -271,47 +280,20 @@
   <section class="chapter" id="brands">
     <div class="text rv">
       <h2>Every brand, language and device</h2>
+    </div>
+    <div class="board-head board-head--text rv"><p class="board-eyebrow">Multi-brand theming</p><h3 class="board-title">One dashboard, every brand</h3></div>
+    <div class="text rv">
       <p>Smart needed to support different brands and white-label partners without building separate products, so I helped establish a theming approach based on shared functionality, components and code, with brand expression handled through configuration. The underlying experience stayed consistent while the visual expression changed, which became increasingly important as Smart expanded internationally. The principle: don't create a new Design System every time a new brand appears. Build the platform so brand differences can be expressed through configuration.</p>
     </div>
-    <div class="board-head rv">
-      <p class="board-eyebrow">Multi-brand theming</p>
-      <h3 class="board-title">One dashboard, every brand</h3>
-      <p class="board-sub">All three apps were built once and reskinned per partner: Smart, Zurich, New Ireland and Keystone, each in light and dark. Shown here is the member dashboard. Layout and components stay fixed; only colour, type and iconography change.</p>
-    </div>
-    <figure class="carousel carousel-brands rv" aria-roledescription="carousel" aria-label="The member dashboard in four brands, light and dark">
-      
-      <div class="carousel-track" tabindex="0">
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 2">
-          <p class="brands-mode">Light</p>
-          <div class="slide-media brand-row">
-            <figure><img class="zoom" src="images/screens/smart-light-dashboard.jpg" width="554" height="1200" alt="The member dashboard in Smart, light theme." loading="lazy" decoding="async"><figcaption>Smart</figcaption></figure>
-            <figure><img class="zoom" src="images/screens/zurich-light-dashboard.jpg" width="554" height="1200" alt="The member dashboard in Zurich, light theme." loading="lazy" decoding="async"><figcaption>Zurich</figcaption></figure>
-            <figure><img class="zoom" src="images/screens/niac-light-dashboard.jpg" width="554" height="1200" alt="The member dashboard in New Ireland, light theme." loading="lazy" decoding="async"><figcaption>New Ireland</figcaption></figure>
-            <figure><img class="zoom" src="images/screens/keystone-light-dashboard.jpg" width="554" height="1200" alt="The member dashboard in Keystone, light theme." loading="lazy" decoding="async"><figcaption>Keystone</figcaption></figure>
-          </div>
-        </div>
-        <div class="slide slide-dark">
-          <p class="brands-mode">Dark</p>
-          <div class="slide-media brand-row">
-            <figure><img class="zoom" src="images/screens/smart-dark-dashboard.jpg" width="554" height="1200" alt="The member dashboard in Smart, dark theme." loading="lazy" decoding="async"><figcaption>Smart</figcaption></figure>
-            <figure><img class="zoom" src="images/screens/zurich-dark-dashboard.jpg" width="554" height="1200" alt="The member dashboard in Zurich, dark theme." loading="lazy" decoding="async"><figcaption>Zurich</figcaption></figure>
-            <figure><img class="zoom" src="images/screens/niac-dark-dashboard.jpg" width="554" height="1200" alt="The member dashboard in New Ireland, dark theme." loading="lazy" decoding="async"><figcaption>New Ireland</figcaption></figure>
-            <figure><img class="zoom" src="images/screens/keystone-dark-dashboard.jpg" width="554" height="1200" alt="The member dashboard in Keystone, dark theme." loading="lazy" decoding="async"><figcaption>Keystone</figcaption></figure>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-controls">
-        <button class="carousel-prev" type="button" aria-label="Previous image">&larr;</button>
-        <span class="carousel-count" aria-live="polite">1 / 2</span>
-        <button class="carousel-next" type="button" aria-label="Next image">&rarr;</button>
+    <figure class="ksp-play rv" aria-label="The Keystone prototype: three apps, four brands, light and dark, left to right and right to left, large screen and mobile">
+      <div class="ksp-panel">
+        <p class="ksp-label">Mini live prototype · Tokens and components</p>
+        <div class="ksp-bar"><fieldset class="ksp-group" data-k="app"><div class="ksp-seg" role="group" aria-label="App"><button type="button" data-k="app" data-v="member" aria-label="Member app" title="Member app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20c.9-3.6 3.7-5.6 7.2-5.6s6.3 2 7.2 5.6"/></svg></button><button type="button" data-k="app" data-v="adviser" aria-label="Adviser app" title="Adviser app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3.5 12.5h17"/></svg></button><button type="button" data-k="app" data-v="employer" aria-label="Employer app" title="Employer app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 20.5V5.5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v15M14.5 10.5h4a1 1 0 0 1 1 1v9M3 20.5h18M8 8h3M8 11.5h3M8 15h3"/></svg></button></div></fieldset><fieldset class="ksp-group" data-k="brand"><div class="ksp-seg" role="group" aria-label="Brand"><button type="button" data-k="brand" data-v="smart" aria-label="Smart" title="Smart"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="#003357"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="#00819D"/></svg></button><button type="button" data-k="brand" data-v="zurich" aria-label="Zurich" title="Zurich"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="#05123F"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="#0095D7"/></svg></button><button type="button" data-k="brand" data-v="niac" aria-label="New Ireland" title="New Ireland"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="#0C2943"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="#B9C894"/></svg></button><button type="button" data-k="brand" data-v="keystone" aria-label="Keystone" title="Keystone"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="#501584"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="#DE6A7F"/></svg></button></div></fieldset><fieldset class="ksp-group" data-k="theme"><div class="ksp-seg" role="group" aria-label="Theme"><button type="button" data-k="theme" data-v="light" aria-label="Light theme" title="Light theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.8v2M12 19.2v2M2.8 12h2M19.2 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M5.5 18.5l1.4-1.4M17.1 6.9l1.4-1.4"/></svg></button><button type="button" data-k="theme" data-v="dark" aria-label="Dark theme" title="Dark theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.6A7.8 7.8 0 0 1 9.4 4.5a7.8 7.8 0 1 0 10.1 10.1z"/></svg></button></div></fieldset><fieldset class="ksp-group" data-k="dir"><div class="ksp-seg" role="group" aria-label="Direction"><button type="button" data-k="dir" data-v="ltr" aria-label="English, left to right" title="English, left to right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5h11M4 10.5h7M4 14.5h11M14 18l4-3.5-4-3.5" transform="translate(0 0)"/></svg></button><button type="button" data-k="dir" data-v="rtl" aria-label="Arabic, right to left" title="Arabic, right to left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6.5H9M20 10.5h-7M20 14.5H9M10 18l-4-3.5 4-3.5"/></svg></button></div></fieldset><fieldset class="ksp-group" data-k="view"><div class="ksp-seg" role="group" aria-label="Screen"><button type="button" data-k="view" data-v="large" aria-label="Large screen" title="Large screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4.5" width="18.4" height="12" rx="1.6"/><path d="M8.5 20h7M12 16.5V20"/></svg></button><button type="button" data-k="view" data-v="mobile" aria-label="Mobile" title="Mobile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.8" width="10" height="18.4" rx="2.2"/><path d="M11 18h2"/></svg></button></div></fieldset></div>
+        <div class="ksp-stage"><div class="ksp-device"></div></div>
       </div>
     </figure>
-    <div class="text rv text-follow"><p>Scalability also meant anticipating requirements before they became one-off problems: building support for right-to-left languages into the platform rather than treating Arabic as an isolated request, and integrating localisation into the workflow so content could evolve independently from interface design. So when Zurich needed Arabic, it shipped on the existing products as a setting, not as a separate build, in a fraction of the time a one-off would have taken. Don't solve today's exception. Improve the platform so the next team doesn't have the same problem.</p></div>
-    <div class="board-head rv">
-      <p class="board-eyebrow">Right to left</p>
-      <h3 class="board-title">The member experience, in Arabic</h3>
-      <p class="board-sub">Right to left is built into all three apps, for any partner that needs it. Shown here is the member app for Zurich. Layout mirrors; components and tokens don't change.</p>
-    </div>
+    <div class="board-head board-head--text rv"><p class="board-eyebrow">Right to left</p><h3 class="board-title">The experience, in Arabic</h3></div>
+    <div class="text rv"><p>Scalability also meant anticipating requirements before they became one-off problems: building support for right-to-left languages into the platform rather than treating Arabic as an isolated request, and integrating localisation into the workflow so content could evolve independently from interface design. So when Zurich needed Arabic, it shipped on the existing products as a setting, not as a separate build, in a fraction of the time a one-off would have taken. Don't solve today's exception. Improve the platform so the next team doesn't have the same problem.</p></div>
     <figure class="carousel carousel-pair rv" aria-roledescription="carousel" aria-label="Member app in English and Arabic">
       
       <div class="carousel-track" tabindex="0">
@@ -357,68 +339,58 @@
         <button class="carousel-next" type="button" aria-label="Next image">&rarr;</button>
       </div>
     </figure>
-    <div class="text rv text-follow"><p>The member app also had to ship on iOS and Android. Rather than design a separate product, I treated native as one more setting of the system, next to brand, theme and direction. The components, tokens and page templates stay the same. Only the shell changes: the status bar, a native header in place of the page heading, a tab bar in place of the menu, bottom sheets for light questions, and Face ID or fingerprint at sign-in, each following its own platform's conventions.</p></div>
-    <div class="board-head rv">
-      <p class="board-eyebrow">Web and native</p>
-      <h3 class="board-title">The member app on iOS and Android</h3>
-      <p class="board-sub">Shown here: Zurich on Android in Arabic and dark, and Smart on iPhone in light. Same components and tokens as the web; the platform decides the shell.</p>
-    </div>
+    <div class="km rv" data-keystone-morph hidden role="img" aria-label="Keystone components switching between Smart in English, left to right, and Zurich in Arabic, right to left: the dashboard hero, a metric card, and a page heading with progress."></div>
+    <div class="board-head board-head--text rv"><p class="board-eyebrow">Web and native</p><h3 class="board-title">The member app on iOS and Android</h3></div>
+    <div class="text rv"><p>The member app also had to ship on iOS and Android. Rather than design a separate product, I treated native as one more setting of the system, next to brand, theme and direction. The components, tokens and page templates stay the same. Only the shell changes: the status bar, a native header in place of the page heading, a tab bar in place of the menu, bottom sheets for light questions, and Face ID or fingerprint at sign-in, each following its own platform's conventions.</p></div>
     <figure class="carousel carousel-pair rv" aria-roledescription="carousel" aria-label="The member app on iOS and Android">
       
       <div class="carousel-track" tabindex="0">
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 7" style="--slide-bg:#d9e6f2">
-          <div class="slide-media pair">
-            <figure><img class="zoom" src="images/native/android-zurich-rtl-dark-signin.jpg" width="647" height="1400" alt="Sign in, Zurich member app on Android in Arabic." loading="lazy" decoding="async"><figcaption>Android · العربية</figcaption></figure>
-            <figure><img class="zoom" src="images/native/ios-smart-light-signin.jpg" width="647" height="1400" alt="Sign in, Smart member app on iOS." loading="lazy" decoding="async"><figcaption>iOS · Smart</figcaption></figure>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 6" style="--slide-bg:#d9e6f2">
+          <div class="slide-media clip loop-video">
+            <video poster="images/native/clip-signin-poster.webp?v=6" width="800" height="866" muted loop playsinline preload="metadata" aria-label="On Android in Arabic, the Zurich sign-in screen. Sign in with fingerprint is tapped and the system fingerprint prompt slides up."><source src="images/native/clip-signin.webm?v=6" type="video/webm; codecs=av01.0.05M.08"><source src="images/native/clip-signin.mp4?v=6" type="video/mp4"></video>
+            <button type="button" class="video-toggle" aria-label="Pause animation"></button>
           </div>
           <div class="slide-caption"><strong>Sign in</strong><span>The app opens on a branded sign-in with one clear action: Face ID on iPhone, fingerprint on Android.</span></div>
         </div>
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 7" style="--slide-bg:#f1ebe1">
-          <div class="slide-media pair">
-            <figure><img class="zoom" src="images/native/android-zurich-rtl-dark-bio.jpg" width="647" height="1400" alt="Face ID or fingerprint, Zurich member app on Android in Arabic." loading="lazy" decoding="async"><figcaption>Android · العربية</figcaption></figure>
-            <figure><img class="zoom" src="images/native/ios-smart-light-bio.jpg" width="647" height="1400" alt="Face ID or fingerprint, Smart member app on iOS." loading="lazy" decoding="async"><figcaption>iOS · Smart</figcaption></figure>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6" style="--slide-bg:#d9e6f2">
+          <div class="slide-media clip loop-video">
+            <video poster="images/native/clip-bio-poster.webp?v=6" width="800" height="866" muted loop playsinline preload="metadata" aria-label="On iPhone, Smart's sign-in. Face ID is tapped, the Face ID prompt appears, recognises the face and the app opens."><source src="images/native/clip-bio.webm?v=6" type="video/webm; codecs=av01.0.05M.08"><source src="images/native/clip-bio.mp4?v=6" type="video/mp4"></video>
+            <button type="button" class="video-toggle" aria-label="Pause animation"></button>
           </div>
           <div class="slide-caption"><strong>Face ID or fingerprint</strong><span>The system prompt stays exactly as the platform draws it, because that is the version people trust.</span></div>
         </div>
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 7" style="--slide-bg:#d9e6f2">
-          <div class="slide-media pair">
-            <figure><img class="zoom" src="images/native/android-zurich-rtl-dark-sheet.jpg" width="647" height="1400" alt="Notifications, Zurich member app on Android in Arabic." loading="lazy" decoding="async"><figcaption>Android · العربية</figcaption></figure>
-            <figure><img class="zoom" src="images/native/ios-smart-light-sheet.jpg" width="647" height="1400" alt="Notifications, Smart member app on iOS." loading="lazy" decoding="async"><figcaption>iOS · Smart</figcaption></figure>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6" style="--slide-bg:#d9e6f2">
+          <div class="slide-media clip loop-video">
+            <video poster="images/native/clip-sheet-poster.webp?v=6" width="800" height="866" muted loop playsinline preload="metadata" aria-label="On iPhone, a bottom sheet slides up asking to turn on notifications. Turn on is tapped, the system permission alert appears, Allow is tapped and the home screen returns."><source src="images/native/clip-sheet.webm?v=6" type="video/webm; codecs=av01.0.05M.08"><source src="images/native/clip-sheet.mp4?v=6" type="video/mp4"></video>
+            <button type="button" class="video-toggle" aria-label="Pause animation"></button>
           </div>
           <div class="slide-caption"><strong>Notifications</strong><span>A bottom sheet for a light question: one primary action and a quiet way out, flush with the bottom edge.</span></div>
         </div>
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 7" style="--slide-bg:#f1ebe1">
-          <div class="slide-media pair">
-            <figure><img class="zoom" src="images/native/android-zurich-rtl-dark-home.jpg" width="647" height="1400" alt="Home, Zurich member app on Android in Arabic." loading="lazy" decoding="async"><figcaption>Android · العربية</figcaption></figure>
-            <figure><img class="zoom" src="images/native/ios-smart-light-home.jpg" width="647" height="1400" alt="Home, Smart member app on iOS." loading="lazy" decoding="async"><figcaption>iOS · Smart</figcaption></figure>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6" style="--slide-bg:#d9e6f2">
+          <div class="slide-media clip loop-video">
+            <video poster="images/native/clip-nav-poster.webp?v=6" width="800" height="866" muted loop playsinline preload="metadata" aria-label="On iPhone, Smart's home dashboard sits under the status bar. Pay in more is tapped and the Contributions page opens with the native header: Back and the page title. Back returns home."><source src="images/native/clip-nav.webm?v=6" type="video/webm; codecs=av01.0.05M.08"><source src="images/native/clip-nav.mp4?v=6" type="video/mp4"></video>
+            <button type="button" class="video-toggle" aria-label="Pause animation"></button>
           </div>
           <div class="slide-caption"><strong>Home</strong><span>The same dashboard as the web, under the status bar. On every other screen the page heading moves into the native header.</span></div>
         </div>
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 7" style="--slide-bg:#d9e6f2">
-          <div class="slide-media pair">
-            <figure><img class="zoom" src="images/native/android-zurich-rtl-dark-pension.jpg" width="647" height="1400" alt="Pension, Zurich member app on Android in Arabic." loading="lazy" decoding="async"><figcaption>Android · العربية</figcaption></figure>
-            <figure><img class="zoom" src="images/native/ios-smart-light-pension.jpg" width="647" height="1400" alt="Pension, Smart member app on iOS." loading="lazy" decoding="async"><figcaption>iOS · Smart</figcaption></figure>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6" style="--slide-bg:#d9e6f2">
+          <div class="slide-media clip loop-video">
+            <video poster="images/native/clip-pension-poster.webp?v=6" width="800" height="866" muted loop playsinline preload="metadata" aria-label="On iPhone, the Pension tab is tapped in the tab bar and the Pension menu opens."><source src="images/native/clip-pension.webm?v=6" type="video/webm; codecs=av01.0.05M.08"><source src="images/native/clip-pension.mp4?v=6" type="video/mp4"></video>
+            <button type="button" class="video-toggle" aria-label="Pause animation"></button>
           </div>
           <div class="slide-caption"><strong>Pension</strong><span>A tab bar replaces the web menu. Pension and Account open menus built from the same navigation groups as the web.</span></div>
         </div>
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="6 of 7" style="--slide-bg:#f1ebe1">
-          <div class="slide-media pair">
-            <figure><img class="zoom" src="images/native/android-zurich-rtl-dark-investments.jpg" width="647" height="1400" alt="Investments, Zurich member app on Android in Arabic." loading="lazy" decoding="async"><figcaption>Android · العربية</figcaption></figure>
-            <figure><img class="zoom" src="images/native/ios-smart-light-investments.jpg" width="647" height="1400" alt="Investments, Smart member app on iOS." loading="lazy" decoding="async"><figcaption>iOS · Smart</figcaption></figure>
-          </div>
-          <div class="slide-caption"><strong>Investments</strong><span>Pages use the same templates and components as the web. Only the shell around them changes.</span></div>
-        </div>
-        <div class="slide" role="group" aria-roledescription="slide" aria-label="7 of 7" style="--slide-bg:#d9e6f2">
-          <div class="slide-media pair">
-            <figure><img class="zoom" src="images/native/android-zurich-rtl-dark-account.jpg" width="647" height="1400" alt="Account, Zurich member app on Android in Arabic." loading="lazy" decoding="async"><figcaption>Android · العربية</figcaption></figure>
-            <figure><img class="zoom" src="images/native/ios-smart-light-account.jpg" width="647" height="1400" alt="Account, Smart member app on iOS." loading="lazy" decoding="async"><figcaption>iOS · Smart</figcaption></figure>
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6" style="--slide-bg:#d9e6f2">
+          <div class="slide-media clip loop-video">
+            <video poster="images/native/clip-account-poster.webp?v=6" width="800" height="866" muted loop playsinline preload="metadata" aria-label="On iPhone, the Account tab opens, Language is tapped, then العربية, and the app flips to Arabic, right to left."><source src="images/native/clip-account.webm?v=6" type="video/webm; codecs=av01.0.05M.08"><source src="images/native/clip-account.mp4?v=6" type="video/mp4"></video>
+            <button type="button" class="video-toggle" aria-label="Pause animation"></button>
           </div>
           <div class="slide-caption"><strong>Account</strong><span>Settings such as language move here from the web footer, where people expect them in a mobile app.</span></div>
         </div>
       </div>
       <div class="carousel-controls">
         <button class="carousel-prev" type="button" aria-label="Previous image">&larr;</button>
-        <span class="carousel-count" aria-live="polite">1 / 7</span>
+        <span class="carousel-count" aria-live="polite">1 / 6</span>
         <button class="carousel-next" type="button" aria-label="Next image">&rarr;</button>
       </div>
     </figure>
@@ -433,8 +405,8 @@
 
   <section class="learned">
     <div class="text rv">
-      <h2>What I learned</h2>
-      <p>The clearest product lesson came from support. People called to ask Smart to make changes for them, not because the features were missing, but because they couldn't work out how to use them. Designing for clarity, with plain language, short steps and choices explained by what happens to your money, mattered more than adding anything new.</p>
+      <h2>What actually moves a product</h2>
+      <p>The clearest product lesson: clarity mattered more than anything new. The features people called support about already existed, so plain language, short steps and choices explained by what happens to your money did more for them than adding another feature.</p>
       <p>Design Systems rarely fail because someone built the wrong button. They struggle when teams aren't aligned, ownership is unclear and the system isn't connected to real delivery. What worked was staying hands-on while creating the conditions for other teams to succeed.</p>
     </div>
   </section>
@@ -454,22 +426,31 @@
     </div>
   </section>
 
-    <figure class="bleed rv">
-      <img src="images/wall.jpg" srcset="images/wall-1000.jpg 1000w, images/wall.jpg 2400w" sizes="100vw" width="2400" height="1050" alt="A wall of member app screens across Smart, Zurich, New Ireland and Keystone, in English and Arabic, light and dark." loading="lazy" decoding="async">
+    <figure class="bleed wall-closeup rv">
+      <img src="images/wall-closeup.webp?v=7" srcset="images/wall-closeup-1200.webp?v=7 1200w, images/wall-closeup.webp?v=7 2400w" sizes="100vw" width="2400" height="667" alt="A close-up of member app screens across Smart, Zurich, New Ireland and Keystone: iPhone home screens with the glass tab bar, one in Arabic, a pension balance broken down by who paid in, contributions, a confirmation, investments in Arabic, beneficiaries, retirement options and an investment strategy step, in light and dark." loading="lazy" decoding="async">
       <figcaption>The member app across every brand, theme and reading direction, all from one library.</figcaption>
     </figure>
+  <section class="intro intro-team" aria-label="Team">
+    <dl class="meta meta-end">
+      <div class="meta-team"><dt>Team</dt><dd>I led the design system and product design, working with two product designers on the roll-out, a content designer, the front-end team, and product owners and subject-matter experts for each area</dd></div>
+    </dl>
+  </section>
 </main>
 
 <footer class="foot">
   <nav class="foot-links" aria-label="Contact and links">
-    <a href="#" class="to-top">Back to top ↑</a>
     <a href="https://paultinker.uk/#smart">Back to portfolio</a>
     <a href="https://www.linkedin.com/in/paultinker/">LinkedIn</a>
     <a href="https://drive.google.com/file/d/1yZDxT7tIeJI6uo1lH3eONTze7y4aqznz/view?usp=sharing">Download CV (PDF)</a>
     <a href="mailto:hello@paultinker.uk">hello@paultinker.uk</a>
+    <a href="#" class="to-top">Back to top ↑</a>
   </nav>
 </footer>
 
-<script src="assets/case-study.js"></script>
+<script src="assets/case-study.js?v=4"></script>
+<script src="assets/ksp-play.js?v=7" defer></script>
+<script src="assets/keystone/icons.js?v=9" defer></script>
+<script src="assets/keystone/morph.js?v=10" defer></script>
+<script src="/_shared/transition.js" defer></script>
 </body>
 </html>

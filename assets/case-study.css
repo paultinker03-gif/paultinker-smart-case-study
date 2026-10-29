@@ -165,6 +165,8 @@ figcaption { font-size: 16px; color: var(--ink-soft); margin-top: 12px; max-widt
 
 /* English and Arabic pair carousel: two phones at real size */
 .board-head { max-width: var(--wide); margin: 56px auto 0; padding: 0 var(--gutter); }
+/* a heading that sits over a text paragraph lines up with that paragraph, not the wide boards */
+.board-head.board-head--text { max-width: var(--measure); }
 .carousel-pair .carousel-track { background: transparent; align-items: stretch; }
 .carousel-pair .carousel-track .slide { flex-direction: row; align-items: center; justify-content: center; gap: clamp(28px, 5vw, 64px); padding: 40px; }
 .slide-media.pair { flex: 0 0 auto; display: flex; flex-direction: row; gap: 28px; }
@@ -412,3 +414,87 @@ h1[tabindex="-1"]:focus { outline: none; }
 .lightbox-prev::before { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H4M11 5l-7 7 7 7'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H4M11 5l-7 7 7 7'/%3E%3C/svg%3E") center / contain no-repeat; }
 .lightbox-next::before { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M13 5l7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M13 5l7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat; }
 .lightbox-close::before { width: 16px !important; height: 16px !important; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat; }
+
+/* The screen wall as a drifting field (assets/wall-drift.js, tablet and up). */
+.wd-on { position: relative; height: min(88vh, 60vw); min-height: 520px; overflow: hidden; background: #b9cee9; }
+.wd-on > img { display: none; }
+.wd-stage { position: absolute; inset: 0; overflow: hidden; }
+.wd-layer { position: absolute; inset: 0; pointer-events: none; }
+.wd-col { position: absolute; top: 6%; width: var(--w); margin-left: calc(var(--w) / -2); will-change: transform; }
+.wd-card { aspect-ratio: 520 / 1126; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 18px 40px -18px rgba(20, 30, 60, .35); }
+.wd-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.wd-pause { position: absolute; left: 20px; bottom: 20px; z-index: 5; width: 40px; height: 40px; border-radius: 50%; border: 0; display: grid; place-items: center; cursor: pointer;
+  color: #0b1b33; background: rgba(255, 255, 255, .8); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 4px 14px rgba(20, 30, 60, .18); }
+.wd-pause svg { width: 16px; height: 16px; }
+.wd-pause:focus-visible { outline: 2px solid #0b1b33; outline-offset: 3px; }
+
+/* intro roles: one list, no box and no titles, as on Vodafone (Paul 2026-10-28) */
+.roles.roles-one { grid-template-columns: 1fr; max-width: 680px; margin-top: 20px; }
+.roles-one .role { padding: 0; background: none; border-radius: 0; }
+.roles-one .role li { border-top: 0; padding: 4px 0 4px 22px; }
+.roles-one .role li::before { top: 13px; }
+
+/* App tabs, full width: the panel spans the screen, screens crossfade, captions swap with a small vertical slide */
+.app-tabs, .app-tabs .carousel { max-width: none; padding: 0; }
+.app-tabs .tablist { margin-left: max(var(--gutter), calc((100% - var(--wide)) / 2 + var(--gutter))); }
+.js .carousel-fade .carousel-track { display: grid; overflow: hidden; scroll-snap-type: none; border-radius: 0; }
+.js .carousel-fade .carousel-track .slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s linear .6s; }
+.js .carousel-fade .carousel-track .slide.is-on { opacity: 1; visibility: visible; transition: opacity .6s ease, visibility 0s; z-index: 1; }
+.js .carousel-fade .slide-caption { transform: translateY(14px); opacity: 0; transition: transform .45s cubic-bezier(.2,.7,.2,1), opacity .35s ease; }
+.js .carousel-fade .slide.is-on .slide-caption { transform: none; opacity: 1; transition-delay: .12s; }
+.js .carousel-fade .slide.is-out .slide-caption { transform: translateY(-14px); opacity: 0; transition-delay: 0s; }
+@media (prefers-reduced-motion: reduce) {
+  .js .carousel-fade .carousel-track .slide, .js .carousel-fade .slide-caption { transition: none !important; transform: none !important; }
+}
+
+/* Native app clips: one phone, cropped close on the part the slide is about, looping */
+.slide-media.clip { position: static; flex: 0 0 auto; align-self: flex-start; width: min(31rem, 100%); aspect-ratio: 1; }
+@media (max-width: 700px) { .slide-media.clip { position: relative; } }
+/* the clip runs off the top of its slide and its stage colour is the slide's, so the phone rises out of the panel */
+.carousel-pair .carousel-track .slide:has(.slide-media.clip) { position: relative; padding-top: 0; }
+.slide-media.clip video { display: block; width: 100%; height: 100%;
+  /* soft left, right and bottom edges, so the phone's shadow never shows a box against the slide */
+  -webkit-mask: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent), linear-gradient(#000 90%, transparent);
+  -webkit-mask-composite: source-in; mask: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent), linear-gradient(#000 90%, transparent); mask-composite: intersect; }
+.slide-media.clip .video-toggle { position: absolute; right: 16px; bottom: 16px; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.92); color: #1c2a3a; box-shadow: 0 2px 8px rgba(10,30,60,.18); font-size: 0 !important; cursor: pointer; display: grid; place-items: center; }
+.slide-media.clip .video-toggle::before { content: ""; width: 16px; height: 16px; background: currentColor; -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat;
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='3' y='2' width='3.5' height='12' rx='1'/%3E%3Crect x='9.5' y='2' width='3.5' height='12' rx='1'/%3E%3C/svg%3E"); }
+.slide-media.clip .video-toggle[aria-label^="Play"]::before { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5Z'/%3E%3C/svg%3E"); }
+.slide-media.clip .video-toggle:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+/* Keystone docs carousel on the prototype's blue, in the same tinted rim as the prototype device (Paul 2026-10-28) */
+.carousel-docs { padding-block: clamp(36px, 5vw, 64px); box-shadow: 0 0 0 100vmax #e8edf3; clip-path: inset(0 -100vmax); background: #e8edf3; }
+.carousel-docs .carousel-track { border: 8px solid #bcc6d2; border-radius: 18px; overflow: hidden; }
+.carousel-docs .carousel-controls button { background: transparent; }
+/* the docs carousel ends its chapter (padding-bottom is zeroed there), so its blue runs on below the controls instead */
+.chapter > .carousel-docs:last-child { clip-path: inset(0 -100vmax calc(-1 * clamp(36px, 5vw, 64px))); }
+
+/* Body copy on white uses the softer grey; headings stay dark (Paul, 2026-10-28) */
+:is(.text p, .text li, .intro-p):not(.learned *, .now *) { color: var(--ink-soft); }
+
+/* The screen wall as one static close-up (Paul 2026-10-29), replacing the drifting field; phones crop in tighter */
+.wall-closeup img { display: block; height: auto; background: #e6edf6; }
+@media (max-width: 700px) { .wall-closeup img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 38% 0; } }
+/* Same pause and play glyphs as every other case study (Paul 2026-10-29) */
+.slide-media.clip .video-toggle::before { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.5 3.5v9M10.5 3.5v9' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); width: 14px; height: 14px; }
+.slide-media.clip .video-toggle[aria-label^="Play"]::before { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 3.5v9l7.5-4.5z'/%3E%3C/svg%3E"); }
+/* Pause buttons: no white fill, just the outline, at 3:1 against the slide (Paul 2026-10-29) */
+.slide-media.clip .video-toggle { width: 36px; height: 36px; background: transparent; border: 1px solid rgba(0,0,0,.5); box-shadow: none; }
+.slide-media.clip .video-toggle:hover { background: rgba(0,0,0,.06); }
+/* The glyph is an inline SVG now (the text label pushed the masked one off centre) */
+.slide-media.clip .video-toggle::before { content: none; }
+.slide-media.clip .video-toggle svg { width: 14px; height: 14px; }
+/* No soft edges on the clips any more: the phone has no shadow and the clip is the slide blue (Paul 2026-10-29) */
+.slide-media.clip video { -webkit-mask: none; mask: none; }
+/* Member / Adviser / Employer: inside the band, top right, on wide screens (Paul 2026-10-29) */
+@media (min-width: 1000px) {
+  .app-tabs { position: relative; }
+  .app-tabs .tablist { position: absolute; z-index: 3; top: 24px; right: max(var(--gutter), calc((100% - var(--wide)) / 2 + var(--gutter))); margin: 0; background: rgba(255,255,255,.55); }
+}
+/* Clips fill the panel top to bottom (540x584 recordings), so the phone is only ever cropped by the panel's
+   edge, never by the video's (Paul 2026-10-29). Phones: the clip IS the blue panel, full width, with the caption under it on white. */
+.slide-media.clip { aspect-ratio: 540 / 584; }
+.carousel-pair .carousel-track .slide:has(.slide-media.clip) { padding-bottom: 0; }
+@media (max-width: 700px) {
+  .carousel-pair .carousel-track .slide:has(.slide-media.clip) { background: none !important; padding: 0 0 8px; gap: 18px; }
+  .carousel-pair .slide-media.clip { width: 100%; border-radius: 12px; overflow: hidden; background: var(--slide-bg, #d9e6f2); }
+}

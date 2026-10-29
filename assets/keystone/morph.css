@@ -1,0 +1,111 @@
+/* Keystone components morphing between Smart (English, left to right) and Zurich (Arabic, right to
+   left), then flipping like a card to the next one. Tablet and up only (assets/keystone/morph.js);
+   phones keep the paired-phone carousel. tokens.css is Keystone's own tokens, scoped to .ks-root.
+   The class name contains "font-" so the site-wide font rules leave Keystone's fonts alone. */
+@font-face { font-family: 'Figtree'; src: url('fonts/figtree-latin.woff2') format('woff2'); font-weight: 300 900; font-display: swap; }
+@font-face { font-family: 'Roboto'; src: url('fonts/roboto-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Roboto'; src: url('fonts/roboto-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Roboto'; src: url('fonts/roboto-700.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Noto Sans Arabic'; src: url('fonts/noto-sans-arabic.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+
+.km[hidden] { display: none !important; }
+.km { --km-ms: 900ms; --km-ease: cubic-bezier(.65, 0, .35, 1); margin: 0; }
+.km-panel {
+  position: relative; height: 520px; border-radius: 14px; overflow: hidden;
+  display: grid; place-items: center; perspective: 1600px;
+  background: #f1ebe1; transition: background-color var(--km-ms) var(--km-ease);
+}
+.km.is-ar .km-panel { background: #d9e6f2; }
+
+/* the card that flips: it carries one component at a time */
+.km-card { transform-style: preserve-3d; will-change: transform; }
+.km-scale { width: 420px; transform: scale(var(--km-scale, 1.3)); }
+@media (max-width: 1000px) { .km-scale { --km-scale: 1.1; } }
+
+/* one text, both languages stacked in the same cell: the box never changes size, so nothing shifts
+   vertically, and the words cross-fade while the box glides across */
+.ks-root .t { display: inline-grid; }
+.ks-root .t > * { grid-area: 1 / 1; justify-self: start; white-space: nowrap; transition: opacity calc(var(--km-ms) * .7) var(--km-ease); }
+.ks-root .t > .ar { opacity: 0; }
+.km.is-ar .ks-root .t > .en { opacity: 0; }
+.km.is-ar .ks-root .t > .ar { opacity: 1; }
+.ks-root .en { --font-display: "Figtree", system-ui, sans-serif; --font-text: "Lato", system-ui, sans-serif; }
+.ks-root .ar { --font-display: "Noto Sans Arabic", "Roboto", system-ui, sans-serif; --font-text: "Noto Sans Arabic", "Roboto", system-ui, sans-serif; }
+.ks-root .en, .ks-root .ar { font-family: inherit; }
+.ks-root .t > .en { font-family: var(--font-text); }
+.ks-root .t > .ar { font-family: var(--font-text); }
+.ks-root .t.disp > * { font-family: var(--font-display); }
+.ks-root .t.disp > .en { font-weight: 600; }
+.ks-root .t.disp > .ar { font-weight: 700; }
+
+.ks-root, .ks-root * { box-sizing: border-box; transition-property: background-color, color, border-color, box-shadow, opacity; transition-duration: var(--km-ms); transition-timing-function: var(--km-ease); }
+.ks-root [data-m] { transition-property: background-color, color, border-color, box-shadow, opacity; }
+.ks-root { font-family: var(--font-text); color: var(--content-secondary); -webkit-font-smoothing: antialiased; }
+
+/* shared parts */
+.ks-eyebrow { display: block; font-size: var(--text-2xs); line-height: var(--leading-2xs); font-weight: 700; letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--content-tertiary); }
+.ks-eyebrow .ar { letter-spacing: 0; }
+.ks-row { display: flex; align-items: center; gap: var(--space-sm); }
+.ks-num { display: inline-flex; align-items: baseline; gap: 0; direction: ltr; color: var(--content-primary); letter-spacing: var(--tracking-tight); line-height: 1.05; }
+.ks-num .cur { font-size: var(--text-md); margin-right: .3rem; }
+.ks-num .val { font-family: "Figtree", system-ui, sans-serif; font-weight: 600; }
+.ks-num .dec { font-size: var(--text-md); font-family: "Figtree", system-ui, sans-serif; font-weight: 600; }
+.ks-badge { display: inline-flex; align-items: center; height: 1.5rem; padding: 0 .5rem; border-radius: var(--radius-sm); font-size: var(--text-2xs); font-weight: 700; line-height: 1; white-space: nowrap; direction: ltr; }
+.ks-badge.inverse { background: var(--active); color: var(--nav-fg); border: 1px solid var(--border-secondary); }
+.ks-badge.subtle { height: 1.125rem; padding: 0 .375rem; font-weight: 400; background: var(--positive-subtle-bg); color: var(--positive-subtle-content); }
+.ks-note { display: block; font-size: var(--text-2xs); line-height: var(--leading-2xs); color: var(--content-tertiary); }
+
+/* the cards clip their contents, so nothing in motion can show outside them */
+.ks-hero, .ks-metric, .ks-page { clip-path: inset(0 round var(--r)); }
+.ks-hero { --r: var(--radius-xl); } .ks-metric, .ks-page { --r: var(--radius-lg); }
+/* no shadows or strokes on the cards or anything in them (Paul) */
+.ks-root .ks-hero, .ks-root .ks-metric, .ks-root .ks-page, .ks-root .ks-quick__tile, .ks-root .ks-badge { box-shadow: none !important; border: 0 !important; }
+
+/* 1: dashboard hero (inverse surface) */
+.ks-hero { background: var(--core); border-radius: var(--radius-xl); padding: 28px 26px 26px; display: flex; flex-direction: column; gap: var(--space-xs); }
+.ks-hero .ks-num .val { font-size: 2.5rem; }
+.ks-hero .ks-note { color: var(--content-tertiary); margin-bottom: var(--space-md); }
+.ks-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+.ks-quick__item { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); min-width: 0; }
+.ks-quick__tile { position: relative; display: grid; place-items: center; width: 3.5rem; height: 3.5rem; border-radius: 999px; background: var(--core); box-shadow: var(--elevation-sm); }
+.ks-quick__tile svg { grid-area: 1 / 1; width: 1.75rem; height: 1.75rem; transition: opacity calc(var(--km-ms) * .7) var(--km-ease); }
+.ks-quick__tile svg.ar { opacity: 0; }
+.km.is-ar .ks-quick__tile svg.en { opacity: 0; }
+.km.is-ar .ks-quick__tile svg.ar { opacity: 1; }
+.ks-quick__label { font-size: var(--text-2xs); line-height: var(--leading-2xs); font-weight: 500; color: var(--content-primary); text-align: center; }
+
+/* 2: metric card with split bar */
+.ks-metric { background: var(--core); border: 1px solid var(--border-tertiary); border-radius: var(--radius-lg); padding: 24px 26px; display: flex; flex-direction: column; gap: var(--space-xs); }
+.ks-metric .ks-num .val { font-size: 2.25rem; }
+.ks-split { margin-top: var(--space-sm); display: flex; flex-direction: column; gap: var(--space-sm); }
+.ks-bar { display: flex; gap: 2px; height: .625rem; border-radius: 999px; overflow: hidden; }
+.ks-bar > span { height: 100%; flex: 0 0 auto; }
+.ks-legend { display: flex; gap: var(--space-xs) var(--space-xl); }
+.ks-legend > span { display: inline-flex; align-items: center; gap: .375rem; font-size: var(--text-2xs); color: var(--content-secondary); }
+.ks-legend i { width: .5rem; height: .5rem; border-radius: 999px; flex: none; }
+
+/* 3: page heading with progress */
+.ks-page { background: var(--core); border-radius: var(--radius-lg); padding: 26px 28px 28px; }
+.ks-step { display: block; font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--content-tertiary); margin-bottom: var(--space-xs); }
+.ks-track { height: .5rem; border-radius: 999px; background: var(--border-secondary); overflow: hidden; display: flex; margin-bottom: var(--space-xl); }
+.ks-track > span { height: 100%; border-radius: 999px; background: var(--positive-primary-core); flex: 0 0 auto; }
+.ks-back { display: inline-flex; align-items: center; gap: .375rem; color: var(--link); font-size: var(--text-sm); font-weight: 700; text-decoration: underline; margin-bottom: var(--space-sm); }
+.ks-back svg { width: 1rem; height: 1rem; transition: transform var(--km-ms) var(--km-ease); }
+[dir="rtl"] .ks-back svg { transform: scaleX(-1); }
+.ks-h1 { display: block; color: var(--content-primary); font-size: 2.25rem; line-height: 1.2; letter-spacing: -.02em; margin: 0 0 var(--space-sm); }
+.ks-lede { display: block; font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--content-tertiary); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border-secondary); }
+
+/* bar segments slide (morph.js); only their colour eases here */
+.ks-bar > span, .ks-track > span { transition: background-color var(--km-ms) var(--km-ease); }
+
+/* the pause button, in the panel's corner */
+.km-pause { position: absolute; left: 16px; bottom: 16px; z-index: 2; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #c9ced4; background: #fff; display: grid; place-items: center; cursor: pointer; color: #0b2a4a; flex: none; }
+.km-pause svg { width: 14px; height: 14px; }
+.km-pause:focus-visible { outline: 2px solid #0b2a4a; outline-offset: 3px; }
+
+/* optically centre the badge's figures: the Arabic face's numerals sit high in a line box */
+.ks-badge .t > .en { position: relative; top: .5px; }
+.ks-badge .t > .ar { position: relative; top: 1.5px; }
+/* no white fill, just the outline, at 3:1 (Paul 2026-10-29) */
+.km-pause { background: transparent; border-color: rgba(0,0,0,.5); }
+.km-pause:hover { background: rgba(0,0,0,.06); }

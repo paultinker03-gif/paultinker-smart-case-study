@@ -22,8 +22,24 @@
     const prev = c.querySelector('.carousel-prev');
     const next = c.querySelector('.carousel-next');
     const count = c.querySelector('.carousel-count');
-    const index = () => Math.round(track.scrollLeft / (track.clientWidth || 1));
-    const go = (i) => track.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * track.clientWidth });
+    // Fade carousels (app tabs) stack their slides and crossfade instead of scrolling.
+    const fade = c.classList.contains('carousel-fade');
+    let at = 0;
+    const index = () => fade ? at : Math.round(track.scrollLeft / (track.clientWidth || 1));
+    const go = (i) => {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      if (!fade) return track.scrollTo({ left: i * track.clientWidth });
+      if (i !== at) {
+        const old = slides[at];
+        old.classList.add('is-out');
+        setTimeout(() => old.classList.remove('is-out'), 650);
+      }
+      at = i;
+      slides[i].classList.remove('is-out');
+      slides.forEach((s, k) => { s.classList.toggle('is-on', k === i); s.toggleAttribute('inert', k !== i); });
+      update();
+    };
+    c.goTo = go;
     const update = () => {
       const i = index();
       count.textContent = (i + 1) + ' / ' + slides.length;
@@ -37,7 +53,7 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
     });
     track.addEventListener('scroll', update, { passive: true });
-    update();
+    if (fade) go(0); else update();
   });
 
   // Back to top. The top bar is sticky, so linking to it would not scroll: go to the very top instead.
@@ -59,7 +75,7 @@
         t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
         const panel = document.getElementById(t.getAttribute('aria-controls'));
         panel.hidden = !on;
-        if (on) { const tr = panel.querySelector('.carousel-track'); if (tr) { tr.scrollLeft = 0; tr.dispatchEvent(new Event('scroll')); } }
+        if (on) { const car = panel.querySelector('.carousel'); if (car && car.goTo) car.goTo(0); else { const tr = panel.querySelector('.carousel-track'); if (tr) { tr.scrollLeft = 0; tr.dispatchEvent(new Event('scroll')); } } }
       });
     };
     tabs.forEach((t, i) => {
@@ -101,7 +117,9 @@
     lbPrev.disabled = at === 0;
     lbNext.disabled = at === group.length - 1;
     const track = img.closest('.carousel-track');
-    if (track) track.scrollTo({ left: at * track.clientWidth, behavior: 'auto' });
+    const car = track && track.closest('.carousel');
+    if (car && car.goTo) car.goTo([...track.children].indexOf(img.closest('.slide')));
+    else if (track) track.scrollTo({ left: at * track.clientWidth, behavior: 'auto' });
   };
   lbPrev.addEventListener('click', (e) => { e.stopPropagation(); show(at - 1); });
   lbNext.addEventListener('click', (e) => { e.stopPropagation(); show(at + 1); });
@@ -143,10 +161,14 @@
   document.querySelectorAll('.loop-video').forEach((fig) => {
     const v = fig.querySelector('video'), btn = fig.querySelector('.video-toggle');
     let paused = still;
-    const label = () => { btn.textContent = v.paused ? 'Play' : 'Pause'; btn.setAttribute('aria-label', v.paused ? 'Play animation' : 'Pause animation'); };
+    const PAUSE = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 3.5v9M10.5 3.5v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    const PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7.5-4.5z" fill="currentColor"/></svg>';
+    const label = () => { btn.innerHTML = v.paused ? PLAY : PAUSE; btn.setAttribute('aria-label', v.paused ? 'Play animation' : 'Pause animation'); };
     btn.addEventListener('click', () => { paused = !v.paused; paused ? v.pause() : v.play(); });
     v.addEventListener('play', label); v.addEventListener('pause', label);
-    const watch = 'IntersectionObserver' in window && new IntersectionObserver(([e]) => { if (e.isIntersecting && !paused) v.play().catch(() => {}); else if (!e.isIntersecting) v.pause(); }, { threshold: .35 });
+    // clips inside a carousel start from the top each time their slide comes into view
+    const restart = !!fig.closest('.carousel');
+    const watch = 'IntersectionObserver' in window && new IntersectionObserver(([e]) => { if (e.isIntersecting && !paused) { if (restart) v.currentTime = 0; v.play().catch(() => {}); } else if (!e.isIntersecting) v.pause(); }, { threshold: .35 });
     if (watch) watch.observe(v);
     label();
   });
