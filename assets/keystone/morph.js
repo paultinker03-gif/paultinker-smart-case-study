@@ -1,6 +1,6 @@
 /* Three Keystone components, each morphing from Smart in English (left to right) to Zurich in
    Arabic (right to left), then flipping like a card to the next one, on a loop (after Koto's
-   Rakbank page). Tablet and up only; phones and reduced motion keep the paired-phone carousel.
+   Rakbank page). Every screen size; reduced motion keeps the paired-phone carousel.
 
    The morph only ever moves things sideways: every text holds both languages stacked in one cell
    (so boxes keep their size), the layout is switched to the other direction, and each element
@@ -9,7 +9,7 @@
 (() => {
   const host = document.querySelector('[data-keystone-morph]');
   if (!host) return;
-  if (matchMedia('(max-width: 700px), (max-height: 500px) and (orientation: landscape)').matches) return;
+  // phones get it too now, smaller (Paul 2026-10-29); reduced motion keeps the paired-phone carousel
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const I = window.KS_ICONS || {};
 

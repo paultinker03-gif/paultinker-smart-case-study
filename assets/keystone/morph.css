@@ -109,3 +109,7 @@
 /* no white fill, just the outline, at 3:1 (Paul 2026-10-29) */
 .km-pause { background: transparent; border-color: rgba(0,0,0,.5); }
 .km-pause:hover { background: rgba(0,0,0,.06); }
+/* phones, portrait and landscape: the same morph, smaller (Paul 2026-10-29) */
+@media (max-width: 700px) { .km-panel { height: 400px; border-radius: 12px; grid-template-columns: max-content; justify-content: center; } .km-scale { --km-scale: .78; } }
+@media (max-width: 380px) { .km-scale { --km-scale: .7; } }
+@media (max-height: 500px) and (orientation: landscape) { .km-panel { height: 340px; } .km-scale { --km-scale: .85; } }

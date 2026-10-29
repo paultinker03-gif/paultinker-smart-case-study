@@ -503,3 +503,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 @media (min-width: 701px) {
   .slide-media.clip video { -webkit-mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
 }
+/* phones, portrait and landscape: a thinner rim round the Keystone docs (Paul 2026-10-29) */
+@media (max-width: 700px), (max-height: 500px) and (orientation: landscape) {
+  .carousel-docs .carousel-track { border-width: 4px; border-radius: 12px; }
+}
